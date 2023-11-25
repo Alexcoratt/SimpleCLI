@@ -87,7 +87,7 @@ private:
 
 public:
 	inline void exec(IOption *, std::istream & in, std::ostream & out, std::string const & endline) {
-		if (readSubmit(in, out, endline, "Are you really want to exit?"))
+		if (readSubmit(in, out, endline, "Do you really want to exit?"))
 			throw new OptionQuitException;
 	}
 

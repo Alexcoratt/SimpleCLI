@@ -39,7 +39,7 @@ BaseOptionContainer::~BaseOptionContainer() {
 }
 
 void BaseOptionContainer::exec(IOption * parent, std::istream & input, std::ostream & output, std::string const & endline) {
-	output << "Switch to " << getName() << endline << endline;
+	output << "Switch to " << getName() << endline << "type h to get list of available options" << endline << endline;
 	char option;
 	output << ">>> ";
 	while (input.get(option)) {
@@ -55,7 +55,7 @@ void BaseOptionContainer::exec(IOption * parent, std::istream & input, std::ostr
 		} catch (OptionBackException const * back) {
 			delete back;
 			if (parent) {
-				output << endline << "Switch to " << parent->getName() << endline;
+				output << "Switch to " << parent->getName() << endline << "type h to get list of available options" << endline;
 				break;
 			}
 			output << "\"" << getName() << "\" is the root container" << endline << endline;
