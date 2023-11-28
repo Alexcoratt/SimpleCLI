@@ -16,5 +16,5 @@ target_include_directories(
 )
 
 add_executable(${PROJECT_NAME} src/main.cpp ${SOURCES})
-target_link_libraries(${PROJECT_NAME} PUBLIC ${PROJECT_NAME}_lib)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}_lib)
 
