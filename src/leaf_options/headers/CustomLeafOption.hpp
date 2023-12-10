@@ -25,7 +25,10 @@ public:
 	void setData(T data) { _data = data; }
 	T getData() const { return _data; }
 
-	void exec(IOption * parent, std::istream & input, std::ostream & output, std::string const & endline) { _func(parent, input, output, endline, _data); }
+	void exec(IOption * parent, std::istream & input, std::ostream & output, std::string const & endline) {
+		input.ignore();
+		_func(parent, input, output, endline, _data);
+	}
 
 	std::string getName() const { return _name; }
 	std::string getHelp() const { return _help; }
@@ -43,6 +46,7 @@ public:
 	CustomLeafOption(std::string const & name, std::string const & help, std::function<void(IOption *, std::istream &, std::ostream &, std::string const &)> const & func) : _name(name), _help(help), _func(func) {}
 
 	void exec(IOption * parent, std::istream & input, std::ostream & output, std::string const & endline) {
+		input.ignore();
 		_func(parent, input, output, endline);
 	}
 
